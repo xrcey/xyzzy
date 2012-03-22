@@ -7,62 +7,15 @@ Random::Random (long seed)
 }
 
 void
-Random::store_initial (long seed)
-{
-  memset (X, 0, sizeof X);
-  X[INDEX_MAX - 1] = seed;
-  long *x = X;
-  long t = 1;
-  for (int i = 0, j = 20; i < INDEX_MAX - 2; i++, j += 21)
-    {
-      if (j >= INDEX_MAX - 1)
-        j -= INDEX_MAX;
-      x[j] = t;
-      t = seed - t;
-      if (t < 0)
-        t += RANDOM_MAX;
-      seed = x[j];
-    }
-}
-
-void
-Random::store ()
-{
-  int i;
-  long *x, *x24;
-#define x55 x
-  for (i = 0, x = X, x24 = x + INDEX_MAX - 24; i < 24; i++, x++, x24++)
-    {
-      *x = *x24 - *x55;
-      if (*x < 0)
-        *x += RANDOM_MAX;
-    }
-  for (i = 24, x = X + 24, x24 = X; i < INDEX_MAX; i++, x++, x24++)
-    {
-      *x = *x24 - *x55;
-      if (*x < 0)
-        *x += RANDOM_MAX;
-    }
-}
-
-void
 Random::srandom (long seed)
 {
-  store_initial (seed);
-  for (int i = 0; i < 5; i++)
-    store ();
-  index = 0;
+  init_genrand (seed);
 }
 
 long
 Random::random ()
 {
-  if (index >= INDEX_MAX)
-    {
-      store ();
-      index = 0;
-    }
-  return X[index++];
+  return genrand_int31 ();
 }
 
 lisp

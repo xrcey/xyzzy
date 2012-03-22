@@ -2378,14 +2378,27 @@ static inline void
 dump_object (FILE *fp, const lrandom_state *d, int n,
              const u_long used[LDATA_MAX_OBJECTS_PER_LONG])
 {
-  dump_simple (fp, d, n, used);
+  for (const lrandom_state *de = d + n; d < de; d++)
+    if (bitisset (used, bit_index (d)))
+      {
+        writef (fp, &d->object.index, sizeof d->object.index);
+        writef (fp, d->object.X, Random::INDEX_MAX);
+        writef (fp, d->object.mag01, sizeof d->object.mag01);
+      }
 }
 
 static inline void
 rdump_object (FILE *fp, lrandom_state *d, int n,
               const u_long used[LDATA_MAX_OBJECTS_PER_LONG])
 {
-  rdump_simple (fp, d, n, used);
+  for (lrandom_state *de = d + n; d < de; d++)
+    if (bitisset (used, bit_index (d)))
+      {
+        readf (fp, &d->object.index, sizeof d->object.index);
+        d->object.X = new unsigned long[Random::INDEX_MAX];
+        readf (fp, d->object.X, Random::INDEX_MAX);
+        readf (fp, d->object.mag01, sizeof d->object.mag01);
+      }
 }
 
 static void

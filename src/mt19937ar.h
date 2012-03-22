@@ -56,7 +56,7 @@
 class MT
 {
 public:
-  unsigned long X[N]; /* the array for the state vector  */
+  unsigned long *X; /* the array for the state vector  */
   int index; /* mti==N+1 means mt[N] is not initialized */
   unsigned long mag01[2];
 
