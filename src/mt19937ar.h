@@ -1,8 +1,8 @@
-/* 
+/*
    A C-program for MT19937, with initialization improved 2002/1/26.
    Coded by Takuji Nishimura and Makoto Matsumoto.
 
-   Before using, initialize the state by using init_genrand(seed)  
+   Before using, initialize the state by using init_genrand(seed)
    or init_by_array(init_key, key_length).
 
    Copyright (C) 1997 - 2002, Makoto Matsumoto and Takuji Nishimura,
@@ -21,8 +21,8 @@
         notice, this list of conditions and the following disclaimer in the
         documentation and/or other materials provided with the distribution.
 
-     3. The names of its contributors may not be used to endorse or promote 
-        products derived from this software without specific prior written 
+     3. The names of its contributors may not be used to endorse or promote
+        products derived from this software without specific prior written
         permission.
 
    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
@@ -43,30 +43,51 @@
    email: m-mat @ math.sci.hiroshima-u.ac.jp (remove space)
 */
 
-/* initializes mt[N] with a seed */
-void init_genrand(unsigned long s);
+#ifndef _mt19937ar_h_
+#define _mt19937ar_h_
 
-/* initialize by an array with array-length */
-/* init_key is the array for initializing keys */
-/* key_length is its length */
-/* slight change for C++, 2004/2/26 */
-void init_by_array(unsigned long init_key[], int key_length);
+/* Period parameters */
+#define N 624
+#define M 397
+#define MATRIX_A 0x9908b0dfUL   /* constant vector a */
+#define UPPER_MASK 0x80000000UL /* most significant w-r bits */
+#define LOWER_MASK 0x7fffffffUL /* least significant r bits */
 
-/* generates a random number on [0,0xffffffff]-interval */
-unsigned long genrand_int32(void);
+class MT
+{
+public:
+  unsigned long X[N]; /* the array for the state vector  */
+  int index; /* mti==N+1 means mt[N] is not initialized */
+  unsigned long mag01[2];
 
-/* generates a random number on [0,0x7fffffff]-interval */
-long genrand_int31(void);
+  MT ();
 
-/* These real versions are due to Isaku Wada, 2002/01/09 added */
-/* generates a random number on [0,1]-real-interval */
-double genrand_real1(void);
+  /* initializes mt[N] with a seed */
+  void init_genrand(unsigned long s);
 
-/* generates a random number on [0,1)-real-interval */
-double genrand_real2(void);
+  /* initialize by an array with array-length */
+  /* init_key is the array for initializing keys */
+  /* key_length is its length */
+  /* slight change for C++, 2004/2/26 */
+  void init_by_array(unsigned long init_key[], int key_length);
 
-/* generates a random number on (0,1)-real-interval */
-double genrand_real3(void);
+  /* generates a random number on [0,0xffffffff]-interval */
+  unsigned long genrand_int32(void);
 
-/* generates a random number on [0,1) with 53-bit resolution*/
-double genrand_res53(void);
+  /* generates a random number on [0,0x7fffffff]-interval */
+  long genrand_int31(void);
+
+  /* These real versions are due to Isaku Wada, 2002/01/09 added */
+  /* generates a random number on [0,1]-real-interval */
+  double genrand_real1(void);
+
+  /* generates a random number on [0,1)-real-interval */
+  double genrand_real2(void);
+
+  /* generates a random number on (0,1)-real-interval */
+  double genrand_real3(void);
+
+  /* generates a random number on [0,1) with 53-bit resolution*/
+  double genrand_res53(void);
+};
+#endif _mt19937ar_h_

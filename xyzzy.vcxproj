@@ -196,6 +196,7 @@
     <ClCompile Include="src\mouse.cc" />
     <ClCompile Include="src\move.cc" />
     <ClCompile Include="src\msgbox.cc" />
+    <ClCompile Include="src\mt19937ar.cc" />
     <ClCompile Include="src\number.cc" />
     <ClCompile Include="src\oledata.cc" />
     <ClCompile Include="src\package.cc" />
@@ -381,6 +382,7 @@
     <ClInclude Include="src\mouse.h" />
     <ClInclude Include="src\mousemsg.h" />
     <ClInclude Include="src\msgbox.h" />
+    <ClInclude Include="src\mt19937ar.h" />
     <ClInclude Include="src\number.h" />
     <ClInclude Include="src\ofn.h" />
     <ClInclude Include="src\oleconv.h" />
