@@ -6,7 +6,6 @@
 <address
 </address
 <area
-</area
 <article
 </article
 <aside
@@ -16,7 +15,6 @@
 <b
 </b
 <base
-</base
 <bdi
 </bdi
 <bdo
@@ -26,7 +24,6 @@
 <body
 </body
 <br
-</br
 <button
 </button
 <canvas
@@ -38,11 +35,9 @@
 <code
 </code
 <col
-</col
 <colgroup
 </colgroup
 <command
-</command
 <datalist
 </datalist
 <dd
@@ -64,7 +59,6 @@
 <em
 </em
 <embed
-</embed
 <fieldset
 </fieldset
 <figcaption
@@ -94,7 +88,6 @@
 <hgroup
 </hgroup
 <hr
-</hr
 <html
 </html
 <i
@@ -102,15 +95,12 @@
 <iframe
 </iframe
 <img
-</img
 <input
-</input
 <ins
 </ins
 <kbd
 </kbd
 <keygen
-</keygen
 <label
 </label
 <legend
@@ -118,7 +108,6 @@
 <li
 </li
 <link
-</link
 <map
 </map
 <mark
@@ -128,7 +117,6 @@
 <menu
 </menu
 <meta
-</meta
 <meter
 </meter
 <nav
@@ -148,7 +136,6 @@
 <p
 </p
 <param
-</param
 <pre
 </pre
 <progress
@@ -174,7 +161,6 @@
 <small
 </small
 <source
-</source
 <span
 </span
 <strong
@@ -218,7 +204,6 @@
 <video
 </video
 <wbr
-</wbr
 
 ;*1
 accept
